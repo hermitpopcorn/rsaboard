@@ -1,0 +1,25 @@
+version: '3.5'
+
+services:
+  go-backend:
+    image: rsaboard-go-be
+    build:
+      dockerfile: .docker/go-be.Dockerfile
+    ports:
+      - '8080:8080'
+    volumes:
+      - './backend:/app'
+  next-frontend:
+    image: rsaboard-next-fe
+    build:
+      dockerfile: .docker/next-fe.Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - './frontend:/app'
+      - 'pnpm-store:/pnpm/store/v3'
+
+volumes:
+  pnpm-store:
+    name: "pnpm-store"
+    external: true

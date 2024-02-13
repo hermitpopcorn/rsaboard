@@ -1,0 +1,7 @@
+version: '3'
+
+tasks:
+  dev:
+    cmds:
+      - docker volume create pnpm-store
+      - docker-compose -f compose-dev.yml up -d
